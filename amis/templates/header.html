@@ -1,0 +1,48 @@
+{% load static %}
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top d-flex align-items-center {% if request.path == '/' %}header-transparent{% endif %}">
+    <div class="container-fluid">
+
+      <div class="row justify-content-center align-items-center">
+        <div class="col-xl-11 d-flex align-items-center justify-content-between">
+        <!-- <h1 class="logo"><a href="index.html">BizPage</a></h1> -->
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <a {% if request.path != '/' %}href={% url 'home' %} {% endif %} href="/" class="logo"><img src="{% static 'assets/img/amisLogo.png' %}" alt="" class="img-fluid"></a>
+
+          <nav id="navbar" class="navbar">
+            <ul>
+              <li><a class="nav-link scrollto active" {% if request.path != '/' %}href={% url 'home' %} {% endif %} href="#hero">Home</a></li>
+              <li><a class="nav-link scrollto" {% if request.path != '/' %}href={% url 'home' %}#about {% endif %} href="#about">About</a></li>              
+              <li class="dropdown"><a href="#"><span>Members</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="{% url 'member:schools' %}">Member Schools</a></li>
+              <li><a class="nav-link scrollto" {% if request.path != '/' %}href={% url 'home' %}#team {%endif%} href="#team">Executive Member</a></li>
+                </ul>
+              </li>
+              <li><a class="nav-link  " href={% url 'blog:blog' %}>Blog</a></li>
+              <li class="dropdown"><a href="#"><span>Registrations</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="#">Membership Registration</a></li>
+                  <li class="dropdown"><a href="#"><span>ANNUAL ACADEMIC COMPETITION</span> <i class="bi bi-chevron-right"></i></a>
+                    <ul>
+                      <li><a href="{% url 'member:primary_competition' %}">Primary Category</a></li>
+                      <li><a href="#">JSS Category</a></li>
+                      <li><a href="#">SSS Category</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Grading Examination</a></li>
+                  <li><a href="{% url 'member:workshop' %}">Workshop Registration</a></li>
+                  <li><a href="{% url 'member:calender' %}">Calender Registration </a></li>
+                  <li><a href="{% url 'member:delegate' %}">Delegate Registration</a></li>
+                </ul>
+              </li>
+              <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+        </div>
+      </div>
+
+    </div>
+  </header><!-- End Header -->
+  

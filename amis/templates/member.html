@@ -1,0 +1,31 @@
+ <!-- ======= Team Section ======= -->
+ <section id="team">
+    <div class="container" data-aos="fade-up">
+      <div class="section-header">
+        <h3>Members of Executive</h3>
+        <p>INFORMATION ABOUT MEMBERS OF THE EXECUTIVE AND THEIR PHOTOS</p>
+      </div>
+
+      <div class="row">
+        {% for member in members %}
+        <div class="col-lg-3 col-md-6">
+          <div class="member" data-aos="fade-up" data-aos-delay="100">
+            <img src="{{member.image_thumbnail.url}}" class="img-fluid" alt="exco image">
+            <div class="member-info">
+              <div class="member-info-content">
+                <h4>{{member.name}}</h4>
+                <span>{{member.post}}</span>
+                <span>{{member.about}}</span>
+                <div class="social">
+                  <span><i class="bi bi-phone"></i>{{member.phone}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+
+    </div>
+  </section><!-- End Team Section -->
