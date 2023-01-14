@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<header class="bgch"></header>
+<main id="main">
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="section-bg mt-5">
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h3>List of Schools that Registered for Examination</h3>
+        </header>
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+      </div>
+     <table class="table table-success table-striped">
+  <thead>
+    <tr>
+      <th scope="col">S/N</th>
+      <th scope="col">Workshop Name</th>
+      <th scope="col">School</th>
+      <th scope="col">Delegate</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for workshop in workshop_list %}
+    <tr>
+      <th scope="row">{{workshop.pk}}</th>
+      <td>{{workshop.workshop_name}}</td>
+      <td>{{workshop.school}}</td>
+      <td>{{workshop.delegate}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+     <div class="text-center"><button type="submit" value="Submit"  class="btn btn-outline-success">
+      <a href="{% url 'member:workshop' %}">Register for Calender</a></button></div>
+
+    </div>
+      </div>
+    </section><!-- End Portfolio Section -->
+</main><!-- End #main -->
+{% endblock content %}

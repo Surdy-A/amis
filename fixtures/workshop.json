@@ -1,0 +1,20 @@
+[
+    {
+        "model": "member.workshop",
+        "pk": 1,
+        "fields": {
+            "workshop_name": "Uniting Islamic Schools",
+            "school": 1,
+            "delegate": 1
+        }
+    },
+    {
+        "model": "member.workshop",
+        "pk": 2,
+        "fields": {
+            "workshop_name": "Uniting Islamic Schools",
+            "school": 1,
+            "delegate": 2
+        }
+    }
+]

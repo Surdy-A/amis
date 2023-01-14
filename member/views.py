@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView
-from member.models import School, PrimaryCompetition
-from .forms import WorkshopForm, DelegateForm, CalenderRegForm, PrimaryCompetitionRegForm
+from member.models import School, PrimaryCompetition, JSSCompetition, SSSCompetition, Workshop, CalenderRegistration, Exam
+from .forms import WorkshopForm, DelegateForm, CalenderRegForm, PrimaryCompetitionRegForm, JSSCompetitionRegForm, SSSCompetitionRegForm, ExamForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.shortcuts import render
@@ -9,7 +9,7 @@ class SchoolListView(ListView):
     model = School
     template_name = 'school/school_list.html'
     context_object_name = 'school_list'
-    paginate_by = 10
+    paginate_by = 100
 
 
 class SchoolDetailView(DetailView):
@@ -77,13 +77,47 @@ def calender_reg_view(request):
 class PrimaryCompetitionListView(ListView):
     model = PrimaryCompetition
     template_name = 'school/primary_competition.html'
-    #context_object_name = 'primary_competition_list'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['primary_competition_list'] = PrimaryCompetition.objects.all()
-        #books = author.book_get.all()
-        #context['quiz'] = ['primary_competition_list'].primarycompetition_set.all()
+        return context
+
+class JssCompetitionListView(ListView):
+    model =JSSCompetition
+    template_name = 'school/jss_competition.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['jss_competition_list'] = JSSCompetition.objects.all()
+        return context
+
+class SssCompetitionListView(ListView):
+    model =SSSCompetition
+    template_name = 'school/sss_competition.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['sss_competition_list'] = SSSCompetition.objects.all()
+        return context
+
+
+class WorkshopListView(ListView):
+    model = Workshop
+    template_name = 'school/workshop_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['workshop_list'] = Workshop.objects.all()
+        return context
+
+class CalenderListView(ListView):
+    model = Workshop
+    template_name = 'school/calender_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['calender_list'] = CalenderRegistration.objects.all()
         return context
 
 class PrimaryCompetitionDetailView(DetailView):
@@ -108,3 +142,61 @@ def primary_competition_reg_view(request):
         form = PrimaryCompetitionRegForm()
     context['form'] = form
     return render(request, "school/add_primary_competition.html", context)
+
+def jss_competition_reg_view(request):
+    context = {}
+    if request.method == 'POST':
+        form = JSSCompetitionRegForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, 'You have successfully register for jss category competition')
+            return HttpResponseRedirect('/')
+    else:
+        form = JSSCompetitionRegForm()
+    context['form'] = form
+    return render(request, "school/add_jss_competition.html", context)
+
+def sss_competition_reg_view(request):
+    context = {}
+    if request.method == 'POST':
+        form = SSSCompetitionRegForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, 'You have successfully register for sss category competition')
+            return HttpResponseRedirect('/')
+    else:
+        form = SSSCompetitionRegForm()
+    context['form'] = form
+    return render(request, "school/add_sss_competition.html", context)
+
+#ExamForm View
+def exam_view(request):
+    context = {}
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+     # create object of form
+        form = ExamForm(request.POST or None, request.FILES or None)
+        # check if form data is valid
+        if form.is_valid():
+        # save the form data to model
+            form.save()
+            messages.success(request, 'Form submission successful')
+
+            return HttpResponseRedirect('/')
+
+    else:
+        form = ExamForm()
+    context['form'] = form
+    return render(request, "school/examform.html", context)
+
+
+class ExamListView(ListView):
+    model = Exam
+    template_name = 'school/exam_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['exam_list'] = Exam.objects.all()
+        return context

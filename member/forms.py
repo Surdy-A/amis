@@ -1,10 +1,10 @@
 from django import forms
-from .models import Workshop, Delegate, CalenderRegistration, Exhibition, Quiz, PrimaryCompetition
+from .models import Workshop, Delegate, CalenderRegistration, Exhibition, Quiz, PrimaryCompetition, JSSCompetition, SSSCompetition, Exam
 
 class WorkshopForm(forms.ModelForm):
     class Meta:
         model = Workshop
-        fields = ['workshop_name', 'school', 'delegate']
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super(WorkshopForm, self).__init__(*args, **kwargs)
@@ -42,3 +42,40 @@ class PrimaryCompetitionRegForm(forms.ModelForm):
         super(PrimaryCompetitionRegForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'form-control my-2'
+
+class JSSCompetitionRegForm(forms.ModelForm):
+    class Meta:
+        model = JSSCompetition
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(JSSCompetitionRegForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control my-2'
+
+class SSSCompetitionRegForm(forms.ModelForm):
+    class Meta:
+        model = SSSCompetition
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(SSSCompetitionRegForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control my-2'
+
+class ExamForm(forms.ModelForm):
+    class Meta:
+        model = Exam
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(ExamForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control my-2'
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+[
+    {
+        "model": "member.delegate",
+        "pk": 1,
+        "fields": {
+            "name": "Alh Wahab Iwalesin",
+            "status_in_school": "Principal",
+            "phone_number": "08039749738"
+        }
+    },
+    {
+        "model": "member.delegate",
+        "pk": 2,
+        "fields": {
+            "name": "Dr Taiwo AbdulKabir",
+            "status_in_school": "Proprietor",
+            "phone_number": "08039749738"
+        }
+    }
+]

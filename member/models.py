@@ -83,6 +83,18 @@ SCHOOL_TYPE_CHOICES = (
      ('Nursery', 'Nursery'),
      ('Primary', 'Primary'),
      ('Secondary', 'Secondary'),
+     ('Islamiyyah', 'Islamiyyah'),
+     ('Nursery+primary+secondary', 'Nursery+primary+secondary'),
+     ('Nursery+primary+secondary+islamiyyah', 'Nursery+Primary+Secondary+Islamiyyah'),
+     ('secondary+islamiyyah', 'Secondary + Islamiyyah'),
+)
+
+SCHOOL_OPERATING_TYPE_CHOICES = (
+     ('Day', 'Day'),
+     ('Boarding', 'Boarding'),
+     ('Secondary', 'Secondary'),
+     ('Day & Boarding', 'Day & Boarding'),
+     ('Boarding Only', 'Boarding Only'),
 )
 
 STATE_GOV_STATUS_CHOICES = (
@@ -106,11 +118,38 @@ OWNERSHIP_CHOICES = (
      ('P', 'NoPartnership'),
 )
 
+SEX = (
+     ('M', 'Male'),
+     ('F', 'Female'),
+)
+
+#School Name and Code Choice
+SCHOOL_NAME__AND_CODE = (
+     ('51241', 'ISLAMIC MODEL SCHOOL. IGANGAN - 51241'),
+     ('61321', 'THE LIGHT NUR & PRY SCHOOL, ORILE- OWU - 61321'),
+     ('61322', 'EPITOME MONTESSORI N/P SCH. ODE-OMU - 61322'),
+     ('42501', 'FOMWAN N /P SCHOOL IREE - 42501'),
+)
+
+LG_NAME__AND_CODE = (
+     ('51', 'ATAKUNMOSA WEST - 51'),
+     ('61', 'AYEDAADE - 61'),
+     ('42', 'BORIPE - 42'),
+     ('11', 'EDE NORTH - 11'),
+)
+
+CLASS = (
+     ('3', 'Grade 3'),
+     ('4', 'Grade 4'),
+     ('5', 'Grade 5'),
+     ('6', 'Grade 6'),
+)
+
 class Member(models.Model):
-    name = models.CharField(max_length=50)
-    post = models.CharField(max_length=20)
-    about = models.CharField(max_length=20)
-    phone = models.CharField(max_length=100)
+    name = models.CharField(max_length=200)
+    post = models.CharField(max_length=200)
+    about = models.CharField(max_length=200)
+    phone = models.CharField(max_length=200)
     image = models.ImageField(upload_to='img')
     slug = models.SlugField(max_length=200, db_index=True, default='')
     image_thumbnail = ImageSpecField(source='image',
@@ -160,7 +199,7 @@ class School(models.Model):
     slug = models.SlugField(max_length=200, db_index=True, default='')
     logo = models.ImageField(upload_to='img')
     logo_thumbnail = ImageSpecField(source='logo',
-                                     processors=[ResizeToFill(768, 450)],
+                                     processors=[ResizeToFill(884, 868)],
                                      format='PNG',
                                      options={'quality': 95})
 
@@ -192,8 +231,11 @@ class Workshop(models.Model):
     workshop_name = models.CharField(max_length=200, default='', blank=True)
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     delegate = models.ForeignKey(Delegate, on_delete=models.CASCADE)
-    #slug = models.SlugField(max_length=200, db_index=True, default='')
-   
+    year = models.CharField(max_length=200, default='')
+    date = models.CharField(max_length=200, default='')
+    venue = models.CharField(max_length=200, default='')
+    amount = models.CharField(max_length=200, default='')
+
     class Meta:
         ordering = ['workshop_name']
         verbose_name_plural = "Workshops"
@@ -204,7 +246,7 @@ class Workshop(models.Model):
 class CalenderRegistration(models.Model):
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     year = models.DateTimeField(default=timezone.now)
-                                  
+
     class Meta:
         ordering = ['-year']
 
@@ -218,6 +260,21 @@ class CalenderRegistration(models.Model):
 
 
 class Quiz(models.Model):
+    candidate_name = models.CharField(max_length=200)
+    candidate_class = models.CharField(max_length=200)
+    candidate_image = models.ImageField(upload_to='img', default="")
+
+    def __str__(self):
+        return self.candidate_name
+
+class Debate(models.Model):
+    candidate_name = models.CharField(max_length=200)
+    candidate_class = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.candidate_name
+
+class Exhibition2(models.Model):
     candidate_name = models.CharField(max_length=200)
     candidate_class = models.CharField(max_length=200)
 
@@ -257,3 +314,75 @@ class PrimaryCompetition(models.Model):
 
     def get_absolute_url(self):
         return reverse('member:competition_detail', args={self.competition_name})
+
+
+#Academic Category for JSS
+class JSSCompetition(models.Model):
+    competition_name = models.CharField(max_length=200)
+    school = models.ForeignKey(School, on_delete=models.CASCADE)
+    quran = models.CharField(max_length=200)
+    teacher_name = models.CharField(max_length=200)
+    teacher_phone = models.CharField(max_length=200)
+    principal_name = models.CharField(max_length=200)
+    quiz = models.ManyToManyField(Quiz)
+    pick_and_talk = models.CharField(max_length=200)
+    ceative_writing = models.CharField(max_length=200)
+    caligraphy = models.CharField(max_length=200)
+
+    class Meta:
+        ordering = ['school']
+
+    def __str__(self):
+        return self.competition_name
+
+    def save(self, *args, **kwargs):
+       value = self.competition_name
+       self.slug = slugify(value, allow_unicode=True)
+       super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('member:competition_detail', args={self.competition_name})
+
+#Academic Category for SSS
+class SSSCompetition(models.Model):
+    competition_name = models.CharField(max_length=200)
+    school = models.ForeignKey(School, on_delete=models.CASCADE)
+    quran = models.CharField(max_length=200)
+    teacher_name = models.CharField(max_length=200)
+    teacher_phone = models.CharField(max_length=200)
+    principal_name = models.CharField(max_length=200)
+    quiz = models.ManyToManyField(Quiz)
+    essay_writing = models.CharField(max_length=200)
+    debate = models.ManyToManyField(Debate)
+    exhibition = models.ManyToManyField(Exhibition2)
+
+    class Meta:
+        ordering = ['school']
+
+    def __str__(self):
+        return self.competition_name
+
+    def save(self, *args, **kwargs):
+       value = self.competition_name
+       self.slug = slugify(value, allow_unicode=True)
+       super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('member:competition_detail', args={self.competition_name})
+
+#Grading Exam Model
+class Exam(models.Model):
+    surname = models.CharField(max_length=200, default='')
+    other_names = models.CharField(max_length=200, default='')
+    student_class = models.CharField(max_length=200, blank=True, choices=CLASS)
+    school = models.ForeignKey(School, on_delete=models.CASCADE, default='')
+    gender = models.CharField(max_length=200, default='', choices=SEX)
+    date_of_birth = models.DateTimeField()
+
+    class Meta:
+        ordering = ['surname']
+        verbose_name_plural = "Examination"
+
+    def __str__(self):
+        return self.surname
+

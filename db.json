@@ -1,0 +1,19 @@
+[
+    {
+        "model": "blog.blog",
+        "pk": 1,
+        "fields": {
+            "title": "ASSOCIATION OF MODEL ISLAMIC SCHOOLS (AMIS)",
+            "body": "AMIS stands for ASSOCIATION OF MODEL  ISLAMIC SCHOOLS.\r\nThis is an organization that coordinates the affairs of Islamic Schools in Osun State........",
+            "created": "2022-11-19T13:25:28Z",
+            "image": "img/lake2.jpg",
+            "slug": "association-of-model-islamic-schools-amis"
+        }
+    },
+    {
+        "model": "blog.blog",
+        "pk": 2,
+        "fields": {
+            "title": "How to  Join AMIS",
+            "body": "Dear Prospective member,\r\n\r\nYou are welcome to AMIS Osun, \r\n\r\nThe association is",
+           "created": "2022-11-19T13:29:29Z", "image": "img/lake2_n384LHY.jpg", "slug": "how-to-join-amis"}}]

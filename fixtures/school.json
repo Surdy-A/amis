@@ -1,0 +1,28 @@
+[
+    {
+        "model": "member.school",
+        "pk": 1,
+        "fields": {
+            "school_name": "INTEGRITY MODEL ACADEMY",
+            "address": "Tadese Street 1440, Moremin Area Iwo.",
+            "email": "integritymodelacademy@gmail.com",
+            "phone": "08039749738, 08039749738",
+            "website": "",
+            "about": "Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem offic",
+            "school_type": "Primary",
+            "state_government_status": "Approved",
+            "federal_government_status": "Registered",
+            "cac_reg_number": "545",
+            "other_association": "Y",
+            "association_details": "",
+            "school_code": "998",
+            "lga_code": "990",
+            "proprietor": 1,
+            "ownership": "S",
+            "local_government": "OS08",
+            "contact_person": "0904348765",
+            "slug": "integrity-model-academy",
+            "logo": "img/IMG-20221012-WA0015.jpg"
+        }
+    }
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "model": "member.primarycompetition",
+        "pk": 1,
+        "fields": {
+            "competition_name": "Deen Propagation",
+            "school": 1,
+            "quran": "Adebayo AbdulWahab",
+            "teacher_name": "Mr Ademola",
+            "teacher_phone": "08039749738",
+            "principal_name": "Mr Ademola",
+            "khutbah": "Ganiu Adeola",
+            "exhibition": 1,
+            "quiz": [
+                1,
+                2
+            ]
+        }
+    }
+]

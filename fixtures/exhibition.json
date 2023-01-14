@@ -1,0 +1,18 @@
+[
+    {
+        "model": "member.exhibition",
+        "pk": 1,
+        "fields": {
+            "candidate_name": "AbdulRahman Fawaz",
+            "candidate_class": "Primary 6"
+        }
+    },
+    {
+        "model": "member.exhibition",
+        "pk": 2,
+        "fields": {
+            "candidate_name": "Ganiu Zainab O.",
+            "candidate_class": "Primary 5"
+        }
+    }
+]

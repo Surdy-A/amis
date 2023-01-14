@@ -25,7 +25,7 @@ SECRET_KEY = 'm&-6f#lv@9&#3xwx=mnz$7vs+3%%e4o&kh@#rt54&5f3$c6j@m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['amis.pythonanywhere.com']
 
 
 # Application definition
@@ -77,12 +77,8 @@ WSGI_APPLICATION = 'amis.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'amisdb',
-        'USER': 'postgres',
-        'PASSWORD': 'Goodman8349**',
-        'HOST': '127.0.0.1',
-        'PORT': 5432
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR + '/' + 'db.sqlite3',
     }
 }
 
@@ -129,7 +125,7 @@ STATICFILES_DIRS = (
 STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, 'static'))
 
 # ,'https://storage.googleapis.com/xchange-assets/static/'
-STATIC_URL = os.getenv("AMIS_STATIC_URL", "/static/")
+STATIC_URL = 'static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # ,'https://storage.googleapis.com/xchange-assets/media/'

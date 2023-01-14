@@ -12,7 +12,7 @@
           <nav id="navbar" class="navbar">
             <ul>
               <li><a class="nav-link scrollto active" {% if request.path != '/' %}href={% url 'home' %} {% endif %} href="#hero">Home</a></li>
-              <li><a class="nav-link scrollto" {% if request.path != '/' %}href={% url 'home' %}#about {% endif %} href="#about">About</a></li>              
+              <li><a class="nav-link scrollto" {% if request.path != '/' %}href={% url 'home' %}#about {% endif %} href="#about">About</a></li>
               <li class="dropdown"><a href="#"><span>Members</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
                   <li><a href="{% url 'member:schools' %}">Member Schools</a></li>
@@ -20,17 +20,24 @@
                 </ul>
               </li>
               <li><a class="nav-link  " href={% url 'blog:blog' %}>Blog</a></li>
+              <li class="dropdown"><a href="#"><span>Information</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="{% url 'member:workshop_view' %}">Workshop Information</a></li>
+                  <li><a href="{% url 'member:calender_view' %}">Calender Information </a></li>
+                  <li><a href="{% url 'member:delegate' %}">Delegate Information</a></li>
+                </ul>
+              </li>
               <li class="dropdown"><a href="#"><span>Registrations</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
                   <li><a href="#">Membership Registration</a></li>
                   <li class="dropdown"><a href="#"><span>ANNUAL ACADEMIC COMPETITION</span> <i class="bi bi-chevron-right"></i></a>
                     <ul>
                       <li><a href="{% url 'member:primary_competition' %}">Primary Category</a></li>
-                      <li><a href="#">JSS Category</a></li>
-                      <li><a href="#">SSS Category</a></li>
+                      <li><a href="{% url 'member:jss_competition' %}">JSS Category</a></li>
+                      <li><a href="{% url 'member:sss_competition' %}">SSS Category</a></li>
                     </ul>
                   </li>
-                  <li><a href="#">Grading Examination</a></li>
+                  <li><a href="{% url 'member:exam' %}">Grading Examination</a></li>
                   <li><a href="{% url 'member:workshop' %}">Workshop Registration</a></li>
                   <li><a href="{% url 'member:calender' %}">Calender Registration </a></li>
                   <li><a href="{% url 'member:delegate' %}">Delegate Registration</a></li>
@@ -45,4 +52,3 @@
 
     </div>
   </header><!-- End Header -->
-  

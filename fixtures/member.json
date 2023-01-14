@@ -1,0 +1,50 @@
+[
+    {
+        "model": "member.member",
+        "pk": 1,
+        "fields": {
+            "name": "MUSTAPHA ABDUL MOJEED",
+            "post": "ASSISTANT GENERAL SECRETARY 1",
+            "about": "THE PROPRIETOR; MARYAM BAMIDELE INT’L SCHOOL, ILE-IFE",
+            "phone": "08030620995",
+            "image": "img/GS1.jpg",
+            "slug": "1"
+        }
+    },
+    {
+        "model": "member.member",
+        "pk": 2,
+        "fields": {
+            "name": "GBADEBO OLADELE AKINWALE",
+            "post": "GENERAL SECRETARY",
+            "about": "THE PROPRIETOR; CITADEL GROUP OF SCHOOLS, IRAGBIJI",
+            "phone": "08032484684, 08053269525",
+            "image": "img/vc2.jpg",
+            "slug": "2"
+        }
+    },
+    {
+        "model": "member.member",
+        "pk": 3,
+        "fields": {
+            "name": "OLANIYAN LUKMAN JIMOH",
+            "post": "VICE CHAIRMAN I",
+            "about": "THE PROPRIETOR; AL-HIKMAH GROUP OF SCHOOLS, IKIRUN IFELODUN",
+            "phone": "08100881428, 08057971979",
+            "image": "img/vc.jpg",
+            "slug": "3"
+        }
+    },
+    {
+        "model": "member.member",
+        "pk": 4,
+        "fields": {
+            "name": "IMAM JAMIU OJELEYE",
+            "post": "CHAIRMAN",
+            "about": "THE PROPRIETOR; MINARET MODEL COLLEGE, MODAKEKE",
+            "phone": "07031373266, 08053081509",
+            "image": "img/president.jpg",
+            "slug": "4"
+        }
+    }
+]

@@ -1,0 +1,13 @@
+[
+    {
+        "model": "member.proprietor",
+        "pk": 1,
+        "fields": {
+            "name": "Alh Jamiu Jamiu",
+            "qualification": "B.sc.",
+            "phone": "08039749738, 08039749738",
+            "occupation": "Teacher",
+            "address": "AMIS STREET, BEHIND DAMY-JAY FILLING STATION, OFF GBONGAN/IBADAN EXPRESS WAY, OWODE-EDE, OSUN STATE"
+        }
+    }
+]

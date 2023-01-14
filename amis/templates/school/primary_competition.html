@@ -36,7 +36,8 @@
       <th scope="row">1</th>
       <td>Quran</td>
       <td>{{participant.quran}}</td>
-      <td>Primary 3</td>
+      <td colspan="3">Primary 3</td>
+
     </tr>
      <tr>
       <th scope="row">2</th>
@@ -44,13 +45,15 @@
       <td>{{ participant.quiz.all|join:" , " }}</td>
       {% for p in participant.quiz.all %}
       <td colspan="2">{{ p.candidate_class}}</td>
+      <!--<td colspan="2"><img src="{{p.candidate_image.url}}" alt="candidate image" width="60" height="60"></td>-->
+
       {% endfor %}
     </tr>
     <tr>
       <th scope="row">3</th>
       <td>Khutbah</td>
       <td>{{participant.khutbah}}</td>
-      <td>Primary 5</td>
+      <td colspan="3">Primary 5</td>
     </tr>
     <tr>
       <th scope="row">4</th>
@@ -58,9 +61,10 @@
        <td>{{ participant.quiz.all|join:" , " }}</td>
       {% for p in participant.quiz.all %}
       <td colspan="2">{{ p.candidate_class}}</td>
+      <!--<td colspan="2"><img src="{{p.candidate_image.url}}" alt="candidate image" width="60" height="60"></td>-->
       {% endfor %}
     </tr>
-    {% endfor %}    
+    {% endfor %}
   </tbody>
 </table>
      <div class="text-center"><button type="submit" value="Submit"  class="btn btn-outline-success">
